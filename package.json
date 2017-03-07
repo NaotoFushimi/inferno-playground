@@ -10,8 +10,8 @@
     "test-simple": "./node_modules/.bin/mocha --compilers ts:espower-typescript/guess  test/spec/*-test.* --timeout 30000",
     "test": "./node_modules/.bin/mocha test/build/**/*.js  --timeout 40000",
     "test-webpack": "npm run build-test; npm test",
-    "build-test" : "NODE_ENV=test ./node_modules/.bin/webpack -d --progress --colors --config ./config/webpack.config.js;",
-    "watch-test" : "NODE_ENV=test ./node_modules/.bin/webpack --watch -d --progress --colors --config ./config/webpack.config.js;"
+    "build-test": "NODE_ENV=test ./node_modules/.bin/webpack -d --progress --colors --config ./config/webpack.config.js;",
+    "watch-test": "NODE_ENV=test ./node_modules/.bin/webpack --watch -d --progress --colors --config ./config/webpack.config.js;"
   },
   "author": "",
   "license": "ISC",
@@ -45,6 +45,8 @@
     "webpack-notifier": "^1.5.0"
   },
   "devDependencies": {
+    "history": "^4.5.1",
+    "spa-serve": "^1.0.10",
     "webpack-node-externals": "^1.5.4"
   }
 }
