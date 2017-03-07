@@ -25,7 +25,7 @@ module.exports = {
         bundle : './src/ts/App.tsx'
     },
     output: {
-        path : "htdocs",
+        path : "docs",
         filename: 'js/App.js',
     },
     // Turn on sourcemaps
