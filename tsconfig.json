@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "module": "commonjs",
+    "jsx": "preserve",
+    "module": "es6",
     "sourceMap" : true, 
-    "target" : "es2015",
+    "target" : "es6",
     "allowJs" : true,
     "pretty" : true,
     "experimentalDecorators": true,
@@ -12,8 +12,11 @@
     "strictNullChecks": true,
     "skipLibCheck": true,     // ビルド高速化（型定義内の型チェック無効化）
     "alwaysStrict" : true,
+    "allowSyntheticDefaultImports": true,
     "types": [
-      "node"
+      "node",
+      "inferno",
+      "inferno-component"
     ],
     "lib": [
       "es2015",// 使用する標準型定義の指定（ target が ES5, ES2015 以外の場合に必要）
@@ -25,7 +28,8 @@
   },
   "exclude": [
     "node_modules",
-    "htdocs"
+    "htdocs",
+    "test"
   ]
 }
 

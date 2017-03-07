@@ -22,11 +22,11 @@ if (isProduction){
 
 module.exports = {
     entry: {
-        bundle : './src/ts/App.ts'
+        bundle : './src/ts/App.tsx'
     },
     output: {
         path : "htdocs",
-        filename: 'js/[name].js',
+        filename: 'js/App.js',
     },
     // Turn on sourcemaps
     devtool: isProduction ? false : 'source-map' ,
@@ -55,7 +55,9 @@ module.exports = {
                                     browsers: ["last 2 versions"]
                                 }]
                             ],
-                            //plugins: ["transform-runtime" , "transform-es2015-block-scoping"]
+                            plugins: [
+                                ["inferno" , {"imports": true}]
+                            ]
                         }
                     },
                     {
@@ -103,6 +105,9 @@ module.exports = {
     },
     externals: {
         //CDNで読み込むやつはここで除外しとくと良い
+
+        "inferno" : "Inferno",
+        //"inferno-component" : "Component"
 
         //'react': 'React',
         //'react-dom': 'ReactDOM',
