@@ -1,0 +1,7 @@
+*.swp
+*.swo
+node_modules
+.idea
+.git
+test/modules/*
+yarn.lock
