@@ -9,7 +9,6 @@ const env = process.env.NODE_ENV
 const isProduction = env === "production";
 const isTest = env === "test";
 
-
 const webpackPlugins = [
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
