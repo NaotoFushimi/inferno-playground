@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "first": "rm -rf .git && yarn install",
-    "test": "./node_modules/.bin/mocha --compilers ts:espower-typescript/guess  test/spec/*-test.* --timeout 30000",
     "watch": "NODE_ENV=development ./node_modules/.bin/webpack --watch -d --progress --colors --config ./config/webpack.config.js",
-    "prod": "NODE_ENV=production ./node_modules/.bin/webpack -d --progress --colors --config ./config/webpack.config.js"
+    "prod": "NODE_ENV=production ./node_modules/.bin/webpack -d --progress --colors --config ./config/webpack.config.js",
+    "test-simple": "./node_modules/.bin/mocha --compilers ts:espower-typescript/guess  test/spec/*-test.* --timeout 30000",
+    "test": "./node_modules/.bin/mocha test/build/**/*.js  --timeout 40000",
+    "test-webpack": "npm run build-test; npm test",
+    "build-test" : "NODE_ENV=test ./node_modules/.bin/webpack -d --progress --colors --config ./config/webpack.config.js;",
+    "watch-test" : "NODE_ENV=test ./node_modules/.bin/webpack --watch -d --progress --colors --config ./config/webpack.config.js;"
   },
   "author": "",
   "license": "ISC",
@@ -39,5 +43,8 @@
     "url-loader": "^0.5.7",
     "webpack": "beta",
     "webpack-notifier": "^1.5.0"
+  },
+  "devDependencies": {
+    "webpack-node-externals": "^1.5.4"
   }
 }

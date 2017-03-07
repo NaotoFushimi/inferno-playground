@@ -9,7 +9,6 @@ const env = process.env.NODE_ENV
 const isProduction = env === "production";
 const isTest = env === "test";
 
-
 const webpackPlugins = [
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
@@ -36,16 +35,15 @@ function createTestEntryPoint(srcpath , destPrefix) {
 
 const testPaths = createTestEntryPoint("./test/spec" , "test/build/")
 
-
 module.exports = {
     entry: isTest ? testPaths :{
-        bundle : './src/ts/App.tsx'
+        bundle : './src/ts/App.ts'
     },
     output: isTest ? {
             filename: '[name]',
-        }: {
-        path : "docs",
-        filename: 'js/App.js',
+        }:{
+        path : "htdocs",
+        filename: 'js/[name].js',
     },
     // Turn on sourcemaps
     devtool: isProduction ? false : 'source-map' ,
@@ -74,9 +72,7 @@ module.exports = {
                                     browsers: ["last 2 versions"]
                                 }]
                             ],
-                            plugins: [
-                                ["inferno" , {"imports": true}]
-                            ]
+                            //plugins: ["transform-runtime" , "transform-es2015-block-scoping"]
                         }
                     },
                     {
@@ -84,8 +80,7 @@ module.exports = {
                         options : {
                             compiler: 'typescript',
                             compilerOptions: {
-                                sourceMap: !isProduction,
-                                "jsx": "preserve",
+                                sourceMap: !isProduction
                             }
                         }
                     }
@@ -125,9 +120,6 @@ module.exports = {
     },
     externals: isTest ? [nodeExternals()] : {
         //CDNで読み込むやつはここで除外しとくと良い
-
-        "inferno" : "Inferno",
-        //"inferno-component" : "Component"
 
         //'react': 'React',
         //'react-dom': 'ReactDOM',

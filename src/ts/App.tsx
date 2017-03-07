@@ -2,7 +2,6 @@ import {render, version} from 'inferno';
 import Component from 'inferno-component';
 
 const container : any = document.getElementById('app');
-
 class MyComponent extends Component<any , any> {
 
     constructor(props) {
